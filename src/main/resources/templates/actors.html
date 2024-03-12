@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database Sample</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="inside-header">
+            <div class="title-header">Movie Database Sample</div>
+        </div>
+    </header>
+    <div id="main">
+        <div class="inside-main">
+            <div class="request-block">
+                <div class="pages-request">
+                    <div class="page-request">
+                        <a th:href="@{/}">Фильмы</a>
+                    </div>
+                    <div class="page-request">
+                        <a th:href="@{/actors}">Актеры</a>
+                    </div>
+                    <div class="page-request">
+                        <a th:href="@{/directors}">Режиссеры</a>
+                    </div>
+                    <div class="page-request">
+                        <a th:href="@{/top10}">Топ-10</a>
+                    </div>
+                </div>
+            </div>
+            <div class="actors-block">
+                <div class="actor-block" th:each="actor : ${actors}">
+                    <div class="name-block" th:text="${actor.getName() + ' ' + actor.getLastname()}"></div>
+                </div>
+            </div>
+            <div class="buttons-block">
+                <th:block th:if="${currentPage > 0}">
+                    <div class="back-button">
+                        <a th:href="${'/actors?page=' + (currentPage.intValue() - 1)}" style="border: 2px solid #0171b6; color: #0171b6;">Назад</a>
+                    </div>
+                </th:block>
+                <th:block th:if="${currentPage <= 0}">
+                    <div class="back-button">
+                        <a href="#" style="border: 2px solid #00416A; color: #00416A;">Назад</a>
+                    </div>
+                </th:block>
+                <th:block th:if="${currentPage < totalPage - 1}">
+                    <div class="back-button">
+                        <a th:href="${'/actors?page=' + (currentPage.intValue() + 1)}" style="border: 2px solid #0171b6; color: #0171b6;">Вперед</a>
+                    </div>
+                </th:block>
+                <th:block th:if="${currentPage >= totalPage - 1}">
+                    <div class="back-button">
+                        <a href="#" style="border: 2px solid #00416A; color: #00416A;">Вперед</a>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

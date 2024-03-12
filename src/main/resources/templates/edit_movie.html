@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database Sample</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="inside-header">
+            <div class="title-header">Movie Database Sample</div>
+        </div>
+    </header>
+    <div id="main">
+        <div class="inside-main">
+            <div class="request-block">
+                <div class="pages-request">
+                    <div class="page-request">
+                        <a href="#">Фильмы</a>
+                    </div>
+                    <div class="page-request">
+                        <a href="#">Актеры</a>
+                    </div>
+                    <div class="page-request">
+                        <a href="#">Режиссеры</a>
+                    </div>
+                    <div class="page-request">
+                        <a href="#">Топ-10</a>
+                    </div>
+                </div>
+            </div>
+            <form th:action="${'/movie/edit/' + movie.getId()}" method="post">
+                <div class="show-movie-block">
+                    <div class="img-movie"></div>
+                    <div class="form-request">
+                        <div class="name-form">Название фильма</div>
+                        <div class="input-form"><input type="text" name="name" th:value="${movie.getName()}"></div>
+                    </div>
+                    <div class="form-request">
+                        <div class="name-form">Год издания</div>
+                        <div class="input-form"><input type="number" name="year" th:value="${movie.getYear()}"></div>
+                    </div>
+                    <div class="form-request">
+                        <div class="name-form">Жанры фильма</div>
+                        <div class="input-form">
+                            <select name="genre">
+                                <option th:each="genre : ${genres}" th:text="${genre.getName()}" th:value="${genre.getId()}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-request">
+                        <div class="name-form">Рейтинг фильма</div>
+                        <div class="input-form"><input type="number" name="rating" th:value="${movie.getRating()}"></div>
+                    </div>
+<!--                    <div class="form-request">-->
+<!--                        <div class="name-form">Актеры</div>-->
+<!--                        <div class="input-form" style="display: inline-block">-->
+<!--                            <input type="text" name="actor" th:each="actor : ${movie.getMoviesActors()}" th:value="${actor.getActor().getName() + ' ' + actor.getActor().getLastname()}">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="form-request">-->
+<!--                        <div class="name-form">Режиссеры</div>-->
+<!--                        <div class="input-form" style="display: inline-block">-->
+<!--                            <input type="text" name="director" th:each="director : ${movie.getMoviesDirectors()}" th:value="${director.getDirector().getName() + ' ' + director.getDirector().getLastname()}">-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="buttoms-movie">
+                        <div class="buttom-movie"><button type="submit">Сохранить</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

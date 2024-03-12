@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database Sample</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="inside-header">
+            <div class="title-header">Movie Database Sample</div>
+        </div>
+    </header>
+    <div id="main">
+        <div class="inside-main">
+            <div class="request-block">
+                <form th:action="@{/movies/filter}" method="post">
+                    <div class="pages-request">
+                        <div class="page-request">
+                            <a th:href="@{/}">Фильмы</a>
+                        </div>
+                        <div class="page-request">
+                            <a th:href="@{/actors}">Актеры</a>
+                        </div>
+                        <div class="page-request">
+                            <a th:href="@{/directors}">Режиссеры</a>
+                        </div>
+                        <div class="page-request">
+                            <a th:href="@{/top10}">Топ-10</a>
+                        </div>
+                    </div>
+                    <div class="forms-request">
+                        <div class="form-request">
+                            <div class="name-form">Название фильма</div>
+                            <div class="input-form"><input type="text" name="name" th:value="${filter.getName()}"></div>
+                        </div>
+                        <div class="form-request">
+                            <div class="name-form">Год издания</div>
+                            <div class="input-form">
+                                <input type="number" name="year1" th:value="${filter.getYearFrom()}" style="width: 20%; margin-right: 25px;">
+                                <input type="number" name="year2" th:value="${filter.getYearTo()}" style="width: 20%;">
+                            </div>
+                        </div>
+                        <div class="form-request">
+                            <div class="name-form">Рейтинг фильма</div>
+                            <div class="input-form"><input type="number" name="rating" step="0.1" th:value="${filter.getRating()}"></div>
+                        </div>
+                        <div class="form-request">
+                            <div class="name-form">Актер</div>
+                            <div class="input-form"><input type="text" name="actor" th:value="${filter.getActorName()}"></div>
+                        </div>
+                        <div class="form-request">
+                            <div class="name-form">Режиссер</div>
+                            <div class="input-form"><input type="text" name="director" th:value="${filter.getDirectorName()}"></div>
+                        </div>
+                    </div>
+                    <div class="button-request">
+                        <button type="submit">Поиск</button>
+                    </div>
+                </form>
+            </div>
+            <div class="movies-block">
+                <div class="movie-block" th:each="movie : ${movies}">
+                    <div class="top-movie"></div>
+                    <div class="bottom-movie">
+                        <div class="name-movie" th:text="${movie.getName()}"></div>
+                        <div class="buttom-movie"><a th:href="${'/movie/' + movie.getId()}">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-block">
+                <th:block th:if="${currentPage > 0}">
+                    <div class="back-button">
+                        <a th:href="${'/?page=' + (currentPage.intValue() - 1)}" style="border: 2px solid #0171b6; color: #0171b6;">Назад</a>
+                    </div>
+                </th:block>
+                <th:block th:if="${currentPage <= 0}">
+                    <div class="back-button">
+                        <a href="#" style="border: 2px solid #00416A; color: #00416A;">Назад</a>
+                    </div>
+                </th:block>
+                <th:block th:if="${currentPage < totalPage - 1}">
+                    <div class="back-button">
+                        <a th:href="${'/?page=' + (currentPage.intValue() + 1)}" style="border: 2px solid #0171b6; color: #0171b6;">Вперед</a>
+                    </div>
+                </th:block>
+                <th:block th:if="${currentPage >= totalPage - 1}">
+                    <div class="back-button">
+                        <a href="#" style="border: 2px solid #00416A; color: #00416A;">Вперед</a>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

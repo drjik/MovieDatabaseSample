@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database Sample</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="inside-header">
+            <div class="title-header">Movie Database Sample</div>
+        </div>
+    </header>
+    <div id="main">
+        <div class="inside-main">
+            <div class="request-block">
+                <div class="pages-request">
+                    <div class="page-request">
+                        <a th:href="@{/}">Фильмы</a>
+                    </div>
+                    <div class="page-request">
+                        <a th:href="@{/actors}">Актеры</a>
+                    </div>
+                    <div class="page-request">
+                        <a th:href="@{/directors}">Режиссеры</a>
+                    </div>
+                    <div class="page-request">
+                        <a th:href="@{/top10}">Топ-10</a>
+                    </div>
+                </div>
+            </div>
+            <div class="movies-block">
+                <div class="movie-block" th:each="movie : ${movies}">
+                    <div class="top-movie"></div>
+                    <div class="bottom-movie">
+                        <div class="name-movie" th:text="${movie.getName()}"></div>
+                        <div class="buttom-movie"><a th:href="${'/movie/' + movie.getId()}">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
