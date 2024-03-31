@@ -1,10 +1,6 @@
 package drjik.springapplication53.Controller;
 
-import drjik.springapplication53.DAO.MovieDao;
 import drjik.springapplication53.DTO.MovieFilter;
-import drjik.springapplication53.Entity.Movie;
-import drjik.springapplication53.Service.ActorService;
-import drjik.springapplication53.Service.DirectorService;
 import drjik.springapplication53.Service.GenreService;
 import drjik.springapplication53.Service.MovieService;
 import lombok.AllArgsConstructor;
@@ -15,14 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class MovieController {
     private MovieService movieService;
-    private ActorService actorService;
-    private DirectorService directorService;
     private GenreService genreService;
 
     @RequestMapping(path = "/")
@@ -42,30 +35,6 @@ public class MovieController {
     public String movie(@PathVariable Integer id, Model model) {
         model.addAttribute("movie", movieService.getPageMovie(id));
         return "show_movie";
-    }
-
-    @RequestMapping(path = "/actors")
-    public String actors(Model model, @RequestParam(name = "page", required = false) Integer page) {
-        if (page == null) {
-            page = 0;
-        }
-
-        model.addAttribute("actors", actorService.getActors(page).getContent());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPage", actorService.getActors(page).getTotalPages());
-        return "actors";
-    }
-
-    @RequestMapping(path = "/directors")
-    public String directors(Model model, @RequestParam(name = "page", required = false) Integer page) {
-        if (page == null) {
-            page = 0;
-        }
-
-        model.addAttribute("actors", directorService.getDirectors(page).getContent());
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPage", directorService.getDirectors(page).getTotalPages());
-        return "actors";
     }
 
     @RequestMapping(path = "/top10")

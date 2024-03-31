@@ -27,10 +27,11 @@ public class MovieService {
     @PersistenceContext
     EntityManager em;
 
-    public MovieService(MovieRepository movieRepository, MoviesActorsRepository moviesActorsRepository, MoviesDirectorsRepository moviesDirectorsRepository, MovieDao movieDao) {
+    public MovieService(MovieRepository movieRepository, MoviesActorsRepository moviesActorsRepository, MoviesDirectorsRepository moviesDirectorsRepository, MovieDao movieDao, EntityManager em) {
         this.movieRepository = movieRepository;
         this.moviesActorsRepository = moviesActorsRepository;
         this.moviesDirectorsRepository = moviesDirectorsRepository;
+        this.em = em;
     }
 
     public Page<Movie> getPagesMovie(Integer numberPage) {

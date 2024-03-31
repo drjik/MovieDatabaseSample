@@ -33,26 +33,26 @@
                     <div class="forms-request">
                         <div class="form-request">
                             <div class="name-form">Название фильма</div>
-                            <div class="input-form"><input type="text" name="name" th:value="${filter.getName()}"></div>
+                            <div class="input-form"><input type="text" name="name" th:value="${filter.name}"></div>
                         </div>
                         <div class="form-request">
                             <div class="name-form">Год издания</div>
                             <div class="input-form">
-                                <input type="number" name="year1" th:value="${filter.getYearFrom()}" style="width: 20%; margin-right: 25px;">
-                                <input type="number" name="year2" th:value="${filter.getYearTo()}" style="width: 20%;">
+                                <input type="number" name="year1" th:value="${filter.yearFrom}" style="width: 20%; margin-right: 25px;">
+                                <input type="number" name="year2" th:value="${filter.yearTo}" style="width: 20%;">
                             </div>
                         </div>
                         <div class="form-request">
                             <div class="name-form">Рейтинг фильма</div>
-                            <div class="input-form"><input type="number" name="rating" step="0.1" th:value="${filter.getRating()}"></div>
+                            <div class="input-form"><input type="number" name="rating" step="0.1" th:value="${filter.rating}"></div>
                         </div>
                         <div class="form-request">
                             <div class="name-form">Актер</div>
-                            <div class="input-form"><input type="text" name="actor" th:value="${filter.getActorName()}"></div>
+                            <div class="input-form"><input type="text" name="actor" th:value="${filter.actorName}"></div>
                         </div>
                         <div class="form-request">
                             <div class="name-form">Режиссер</div>
-                            <div class="input-form"><input type="text" name="director" th:value="${filter.getDirectorName()}"></div>
+                            <div class="input-form"><input type="text" name="director" th:value="${filter.directorName}"></div>
                         </div>
                     </div>
                     <div class="button-request">
@@ -64,8 +64,8 @@
                 <div class="movie-block" th:each="movie : ${movies}">
                     <div class="top-movie"></div>
                     <div class="bottom-movie">
-                        <div class="name-movie" th:text="${movie.getName()}"></div>
-                        <div class="buttom-movie"><a th:href="${'/movie/' + movie.getId()}">Подробнее</a></div>
+                        <div class="name-movie" th:text="${movie.name}"></div>
+                        <div class="buttom-movie"><a th:href="${'/movie/' + movie.id}">Подробнее</a></div>
                     </div>
                 </div>
             </div>

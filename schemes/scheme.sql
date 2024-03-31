@@ -81,8 +81,8 @@ create table user_roles
 );
 
 insert into users(login, password)
-values ('admin', '12345'),
-       ('user', '12345');
+values ('admin', '$2a$12$tmi1y6Up4jztiuJBKdLzlOZFO45uS9yDZjTWm02x3YSXhlI.cS4Y6'),
+       ('user', '$2a$12$tmi1y6Up4jztiuJBKdLzlOZFO45uS9yDZjTWm02x3YSXhlI.cS4Y6');
 
 insert into roles(name)
 values ('admin'), ('user');

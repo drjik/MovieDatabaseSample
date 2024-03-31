@@ -32,22 +32,14 @@
             </div>
             <div class="show-movie-block">
                 <div class="img-movie"></div>
-                <div class="desc-movie" th:text="${movie.getName()}"></div>
-                <div class="desc-movie" th:text="'Год производства - ' + ${movie.getYear()}"></div>
-                <div class="desc-movie" th:text="'Рейтинг - ' + ${movie.getRating()}"></div>
-                <div class="desc-movie" th:text="'Жанр - ' + ${movie.getGenre().getName()}"></div>
-<!--                <div class="desc-movie" th:text="'Режиссеры - '">-->
-<!--                    <div th:each="director : ${movie.getMoviesDirectors()}">-->
-<!--                        <div th:text="${director.getDirector().getName() + ' ' + director.getDirector().getLastname()} + ', '"></div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="desc-movie" th:text="'Актеры - '">-->
-<!--                    <div th:each="actor : ${movie.getMoviesActors()}" th:text="${actor.getActor().getName() + ', '}"></div>-->
-<!--                </div>-->
+                <div class="desc-movie" th:text="${movie.name}"></div>
+                <div class="desc-movie" th:text="'Год производства - ' + ${movie.year}"></div>
+                <div class="desc-movie" th:text="'Рейтинг - ' + ${movie.rating}"></div>
+                <div class="desc-movie" th:text="'Жанр - ' + ${movie.getGenre().name}"></div>
                 <div class="buttoms-movie">
                     <div class="buttom-movie"><a th:href="@{/}">Назад</a></div>
-                    <div class="buttom-movie"><a th:href="${'/movie/delete/' + movie.getId()}">Удалить</a></div>
-                    <div class="buttom-movie"><a th:href="${'/movie/edit/' + movie.getId()}">Редактировать</a></div>
+                    <div class="buttom-movie"><a th:href="${'/movie/delete/' + movie.id}">Удалить</a></div>
+                    <div class="buttom-movie"><a th:href="${'/movie/edit/' + movie.id}">Редактировать</a></div>
                 </div>
             </div>
         </div>

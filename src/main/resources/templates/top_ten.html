@@ -34,8 +34,8 @@
                 <div class="movie-block" th:each="movie : ${movies}">
                     <div class="top-movie"></div>
                     <div class="bottom-movie">
-                        <div class="name-movie" th:text="${movie.getName()}"></div>
-                        <div class="buttom-movie"><a th:href="${'/movie/' + movie.getId()}">Подробнее</a></div>
+                        <div class="name-movie" th:text="${movie.name}"></div>
+                        <div class="buttom-movie"><a th:href="${'/movie/' + movie.id}">Подробнее</a></div>
                     </div>
                 </div>
             </div>

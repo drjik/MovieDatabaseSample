@@ -30,41 +30,29 @@
                     </div>
                 </div>
             </div>
-            <form th:action="${'/movie/edit/' + movie.getId()}" method="post">
+            <form th:action="${'/movie/edit/' + movie.id}" method="post">
                 <div class="show-movie-block">
                     <div class="img-movie"></div>
                     <div class="form-request">
                         <div class="name-form">Название фильма</div>
-                        <div class="input-form"><input type="text" name="name" th:value="${movie.getName()}"></div>
+                        <div class="input-form"><input type="text" name="name" th:value="${movie.name}"></div>
                     </div>
                     <div class="form-request">
                         <div class="name-form">Год издания</div>
-                        <div class="input-form"><input type="number" name="year" th:value="${movie.getYear()}"></div>
+                        <div class="input-form"><input type="number" name="year" th:value="${movie.year}"></div>
                     </div>
                     <div class="form-request">
                         <div class="name-form">Жанры фильма</div>
                         <div class="input-form">
                             <select name="genre">
-                                <option th:each="genre : ${genres}" th:text="${genre.getName()}" th:value="${genre.getId()}"></option>
+                                <option th:each="genre : ${genres}" th:text="${genre.name}" th:value="${genre.id}"></option>
                             </select>
                         </div>
                     </div>
                     <div class="form-request">
                         <div class="name-form">Рейтинг фильма</div>
-                        <div class="input-form"><input type="number" name="rating" th:value="${movie.getRating()}"></div>
+                        <div class="input-form"><input type="number" name="rating" th:value="${movie.rating}"></div>
                     </div>
-<!--                    <div class="form-request">-->
-<!--                        <div class="name-form">Актеры</div>-->
-<!--                        <div class="input-form" style="display: inline-block">-->
-<!--                            <input type="text" name="actor" th:each="actor : ${movie.getMoviesActors()}" th:value="${actor.getActor().getName() + ' ' + actor.getActor().getLastname()}">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="form-request">-->
-<!--                        <div class="name-form">Режиссеры</div>-->
-<!--                        <div class="input-form" style="display: inline-block">-->
-<!--                            <input type="text" name="director" th:each="director : ${movie.getMoviesDirectors()}" th:value="${director.getDirector().getName() + ' ' + director.getDirector().getLastname()}">-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="buttoms-movie">
                         <div class="buttom-movie"><button type="submit">Сохранить</button></div>
                     </div>
